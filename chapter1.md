@@ -1,12 +1,12 @@
 # Why write tests?
 
-Whenever the subject of test-driven development comes up, my experience has been that a lot of developer, managers and other people are resistant to the idea.
+Whenever the subject of test-driven development comes up, my experience has been that a lot of developers, managers and other people are resistant to the idea.
 
 > Can't you just check you get it right?
 
 Software development is one of the hardest things humans have done. The best developers in the world can't guarantee all of their code is 100% perfect and bug free - even NASA, with their gargantuan budget, have gone wrong at times. It's entirely unreasonable to expect every developer to get it right 100% of the time or catch every error they may have introduced. So taking steps to actively watch for any bugs is prudent.
 
-The best analogy I've ever heard is with double-entry bookkeeping in accountancy. Accountants need to be able to double-check that their records are correct, so they enter them twice and make sure the results match up. Tests do the same thing in that they express the logic of an application in a separate place, to help ensure that the implementation and intent match up.
+The best analogy I've ever heard is with double-entry bookkeeping in accountancy. Accountants need to be able to double-check that their records are correct, so they enter them twice and make sure the results match up. Tests do the same thing in that they express the logic of an application in a separate place, to help ensure that the implementation and intent match up. Accountancy isn't as demanding as programming, yet we seem to think we're infallible. Truth is, we aren't, and never will be, so we need all the help we can get.
 
 > We don't have time to write tests
 
@@ -27,3 +27,16 @@ No, you can't. Writing tests is not a silver bullet. There are often bugs that s
 Browser-based acceptance tests are the easiest to justify to non-technical users. They visibly work with the application by driving a real web browser to interact with it to ensure that it works as specified. They're also often the easiest way to get started writing tests. However, they have the disadvantage of being very much slower than unit tests, and are therefore not usually run as part of the standard test suite.
 
 Lower-level integration or unit tests are harder to justify. Someone else may not be able to see how your application is being tested, and therefore not be certain whether it's actually testing it or not. They may also feel more abstract, especially if you're mocking out some of the dependencies in your tests. For this, it's a good idea to generate code coverage stats regularly to make sure that you can demonstrate what proportion of your application is tested.
+
+OK, you've convinced me. What do I need to know?
+------------------------------------------------
+
+You'll hear a lot of different types of tests mentioned, such as end-to-end tests, functional tests, and so on. In general, there are three main types of tests you should be aware of:
+
+*Acceptance tests* are written from the perspective of an end user, and dictate **what an application must do to be acceptable**. This may mean writing the test in a manner that can be understood by business stakeholders or other non-technical team members. Typically this might be summed up as something like this:
+
+> When I click the "Post" button, my latest blog post should be posted
+
+*Integration tests* are lower level tests that interact with more than one unit of code within your application. For instance, if you had a REST API that retrieved recipes, you might test that a request searching for Banoffee Pie returned a result from the `recipes` endpoint.
+
+*Unit tests* work on a single "unit" of code, such as a class or function, and any dependencies of that unit must be replaced by mocks. For instance, if you wrote a test for an ORM model that in turn called the database, that would not technically be a unit test - for it to meet the definition of a unit test, the database connection would need to have been mocked. 
