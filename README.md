@@ -1,6 +1,6 @@
 # Laravel Testing Recipes
 
-Laravel is a pretty popular choice of framework right now. It's largely supplanted CodeIgniter as the easiest framework to get started with in PHP, but at the same time it's flexible enough that in can grow with you.
+Laravel is a pretty popular choice of framework right now. It's largely supplanted CodeIgniter as the easiest framework to get started with in PHP, but at the same time it's flexible enough that it can grow with you.
 
 One notable feature of Laravel compared to earlier frameworks such as CodeIgniter is the greater emphasis it places on testing. It comes with both PHPUnit and Mockery installed by default, and the documentation strongly encourages you to write tests for your application. However, that doesn't necessarily mean that it's obvious how to test every component of your application.
 
