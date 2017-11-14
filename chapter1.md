@@ -1,8 +1,17 @@
 # Why write tests?
 
-Whenever the subject of test-driven development comes up, my experience has been that a lot of developers, managers and other people are resistant to the idea.
+Whenever the subject of test-driven development comes up, my experience has been that a lot of developers, managers and other stakeholders are resistant to the idea. You may even be one of them! Well, I'm here to tell you that learning to write tests is the single best thing I've done as a professional web developer. The benefits of having a full test suite include:
+
+* Easier debugging
+* Easier upgrades
+* Better code
+* Easier to understand
+
+And that's just for starter! However, you're still likely to hear a lot of arguments against writing tests. I've collected these below:
 
 > Can't you just check you get it right?
+
+This will only work for the most trivial of sites. Otherwise, you're stuck with manually checking the site behaves as expected every time you make a change. Do you relish that prospect? I certainly don't - I'm too lazy and my time is too expensive to my employer to do that.
 
 Software development is one of the hardest things humans have done. The best developers in the world can't guarantee all of their code is 100% perfect and bug free - even NASA, with their gargantuan budget, have gone wrong at times. It's entirely unreasonable to expect every developer to get it right 100% of the time or catch every error they may have introduced. So taking steps to actively watch for any bugs is prudent.
 
@@ -37,6 +46,6 @@ You'll hear a lot of different types of tests mentioned, such as end-to-end test
 
 > When I click the "Post" button, my latest blog post should be posted
 
-*Integration tests* are lower level tests that interact with more than one unit of code within your application. For instance, if you had a REST API that retrieved recipes, you might test that a request searching for Banoffee Pie returned a result from the `recipes` endpoint.
+*Integration tests* are lower level tests that interact with more than one unit of code within your application. For instance, if you had a REST API that retrieved recipes, you might test that a request searching for *Banoffee Pie* returned a result from the `recipes` endpoint.
 
 *Unit tests* work on a single "unit" of code, such as a class or function, and any dependencies of that unit must be replaced by mocks. For instance, if you wrote a test for an ORM model that in turn called the database, that would not technically be a unit test - for it to meet the definition of a unit test, the database connection would need to have been mocked. 
