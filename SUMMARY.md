@@ -14,3 +14,5 @@
 * [Testing middleware](chapter8.md)
 * [Testing service providers](chapter9.md)
 * [Testing pretty much anything else](chapter10.md)
+* [Part 4 - Miscellaneous testing strategies](part4.md)
+* [Golder Master tests](chapter11.md)
