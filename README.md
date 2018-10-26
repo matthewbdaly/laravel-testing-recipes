@@ -4,7 +4,7 @@ Laravel is a pretty popular choice of framework right now. It's largely supplant
 
 One notable feature of Laravel compared to earlier frameworks such as CodeIgniter is the greater emphasis it places on testing. It comes with both PHPUnit and Mockery installed by default, and the documentation strongly encourages you to write tests for your application. However, that doesn't necessarily mean that it's obvious how to test every component of your application.
 
-That's where this book comes in. Over the last couple of years I've used Laravel extensively and I've formulated strategies for writing tests for most of the components of a typical Laravel application. I won't pretend this book is exhaustive, but it will give you recipes for testing the major components of your Laravel application, and if you understand it reasonably well, you should be able to apply the same strategies to other areas of your application.
+That's where this book comes in. Over the last few years I've used Laravel fairly extensively and I've formulated strategies for writing tests for most of the components of a typical Laravel application. I won't pretend this book is exhaustive, but it will give you recipes for testing the major components of your Laravel application. Once this is done, you'll understand the methodology behind writing tests, and the tools used, and will be in a position to start formulating your own testing strategies.
 
 About me
 --------
