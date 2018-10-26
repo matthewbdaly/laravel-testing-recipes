@@ -129,3 +129,21 @@ $factory->define(Tripstream\Eloquent\Models\Post::class, function (Faker $faker)
     ];
 });
 ```
+
+Using an in-memory SQLite database
+==================================
+
+It's vitally import that your test suite be as fast as possible, at least for unit tests. Slow test suites disrupt your workflow. Your entire suite of unit tests (and ideally integration tests too), should all run within ten seconds if at all possible, because any longer and your mind will start to wander.
+
+It's therefore a good idea to use an in-memory SQLite database if at all possible. It ensures that any tests that interact with the database will be lightning-fast, and helps keep your test suite inside the magic 10-second limit. To do so, make sure the `DB_CONNECTION` and `DB_DATABASE` keys are set as follows in your `phpunit.xml`:
+
+```xml
+        <env name="APP_ENV" value="testing"/>
+        <env name="CACHE_DRIVER" value="array"/>
+        <env name="DB_CONNECTION" value="sqlite"/>
+        <env name="DB_DATABASE" value=":memory:"/>
+```
+
+You should also use the `RefreshDatabase` trait in any tests that interact with the database, as that will automatically destroy the database after each test, then re-migrate it for the next one.
+
+A word of warning - using SQLite for your tests depends on you not using any database-specific functionality or raw queries. If you call anything that's specific to MySQL or PostgreSQL, or use a raw query, you can almost certainly no longer rely on your tests being consistent between different databases, and should switch to testing against your production database. However, as long as you stick to the functionality explicitly provided by Eloquent, and never use methods such as `raw`, `whereRaw`, or `selectRaw`, you should be fine.
