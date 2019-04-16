@@ -37,6 +37,8 @@ Browser-based acceptance tests are the easiest to justify to non-technical users
 
 Lower-level integration or unit tests are harder to justify. Someone else may not be able to see how your application is being tested, and therefore not be certain whether it's actually testing it or not. They may also feel more abstract, especially if you're mocking out some of the dependencies in your tests. For this, it's a good idea to generate code coverage stats regularly to make sure that you can demonstrate what proportion of your application is tested.
 
+Code coverage will tell you what parts of your application are and aren't tested, but they won't tell you if those tests are all that good. Fortunately, there are ways to verify that, which will be covered later.
+
 OK, you've convinced me. What do I need to know?
 ------------------------------------------------
 
