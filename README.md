@@ -6,6 +6,14 @@ One notable feature of Laravel compared to earlier frameworks such as CodeIgnite
 
 That's where this book comes in. Over the last few years I've used Laravel fairly extensively and I've formulated strategies for writing tests for most of the components of a typical Laravel application. I won't pretend this book is exhaustive, but it will give you recipes for testing the major components of your Laravel application. Once this is done, you'll understand the methodology behind writing tests, and the tools used, and will be in a position to start formulating your own testing strategies.
 
+How to read this book
+---------------------
+
+This is more of a cookbook than something to be read cover to cover, and my experience has been that it's easier to understand testing by doing than by reading about it. To get the best out of it, I'd recommend the following methodology:
+
+* Skim-read it once, just to get the sense of what it covers.
+* Then, when you have the occasion to write a test for something, find the appropriate section, and use that to help you write the test
+
 About me
 --------
 
