@@ -7,7 +7,9 @@ Whenever the subject of test-driven development comes up, my experience has been
 * Better code
 * Easier to understand
 
-And that's just for starters! However, you're still likely to hear a lot of arguments against writing tests. I've collected these below, together with refutations:
+And that's just for starters! Conversely, I've also been in the opposite position, and a large legacy project with little or no test coverage can cause you, your colleagues, and your clients a lot of stress - certainly I attribute many of my grey hairs to legacy code without tests!
+
+However, you're still likely to hear a lot of arguments against writing tests. I've collected these below, together with refutations:
 
 > Can't you just check you get it right?
 
@@ -19,9 +21,9 @@ The best analogy I've ever heard is with double-entry bookkeeping in accountancy
 
 > We don't have time to write tests
 
-And you do have time to fix bugs in production that could have been found earlier? The earlier a bug is found, the lower the cost to fix it. Once code is in production, the potential cost of fixing problems with it becomes much higher than if it were detected straight after implementation, because the code I've written is still fresh in my mind.
+And you do have time to fix bugs in production that could have been found earlier? The earlier a bug is found, the lower the cost to fix it. Once code is in production, the potential cost of fixing problems with it becomes much higher than if it were detected straight after implementation, because the code I've written is still fresh in my mind. In addition, certain changes can be much harder to implement in production that development because they're not easy to reverse - for instance, if you choose the wrong method of password hashing, it can be very hard to change it later.
 
-I've worked on projects with and without tests. When working on the ones that had tests, I often found problems immediately after I'd implemented the solution, making it easy to fix them. When I didn't have tests, it was often weeks or months later that I found the issue, potentially causing problems with a project. Upgrades to software packages have been quicker, easier and less stressful because I've been able to identify issues during the upgrade process. And it was quicker to reproduce the issue with tests because I could set a breakpoint at an appropriate point in the existing test suite and examine what's happening directly.
+I've worked on projects with and without tests. When working on the ones that had tests, I often found problems shortly after I'd implemented the solution, making it easy to fix them. When I didn't have tests, it was often weeks or months later that I found the issue, potentially causing problems with a project. Upgrades to software packages have been quicker, easier and less stressful because I've been able to identify issues during the upgrade process. And it was quicker to reproduce the issue with tests because I could set a breakpoint at an appropriate point in the existing test suite and examine what's happening directly. In addition, tests encourage a kind of "outside-in" viewpoint that's hard to describe, but makes it easier to understand what's going on.
 
 There's no denying that writing tests does add time to the software development process. However, you do get a return on that investment of time. A project with good test coverage is easier to work on, to upgrade and extend, and to maintain. By catching errors as early as possible, a good test suite will save you the grief of explaining to your manager why your shiny new web app failed in production, rather than allowing you to catch that error in development.
 
@@ -35,7 +37,7 @@ No, you can't. Writing tests is not a silver bullet. There are often bugs that s
 
 Browser-based acceptance tests are the easiest to justify to non-technical users. They visibly work with the application by driving a real web browser to interact with it to ensure that it works as specified. They're also often the easiest way to get started writing tests. However, they have the disadvantage of being very much slower than unit tests, and are therefore not usually run as part of the standard test suite.
 
-Lower-level integration or unit tests are harder to justify. Someone else may not be able to see how your application is being tested, and therefore not be certain whether it's actually testing it or not. They may also feel more abstract, especially if you're mocking out some of the dependencies in your tests. For this, it's a good idea to generate code coverage stats regularly to make sure that you can demonstrate what proportion of your application is tested.
+Lower-level integration or unit tests may be harder to justify. Someone else may not be able to see how your application is being tested, and therefore not be certain whether it's actually testing it or not. They may also feel more abstract, especially if you're mocking out some of the dependencies in your tests. For this, it's a good idea to generate code coverage stats regularly to make sure that you can demonstrate what proportion of your application is tested.
 
 Code coverage will tell you what parts of your application are and aren't tested, but they won't tell you if those tests are all that good. Fortunately, there are ways to verify that, which will be covered later.
 
@@ -50,7 +52,7 @@ You'll hear a lot of different types of tests mentioned, such as end-to-end test
 
 *Integration tests* are lower level tests that interact with more than one unit of code within your application. For instance, if you had a REST API that retrieved recipes, you might test that a request searching for *Banoffee Pie* returned a result from the `recipes` endpoint.
 
-*Unit tests* work on a single "unit" of code, such as a class or function, and any dependencies of that unit must be replaced by mocks. For instance, if you wrote a test for an ORM model that in turn called the database, that would not technically be a unit test - for it to meet the definition of a unit test, the database connection would need to have been mocked. 
+*Unit tests* work on a single "unit" of code, such as a class or function, and any dependencies of that unit should usually be replaced by mocks. For instance, if you wrote a test for an ORM model that in turn called the database, that would not technically be a unit test - for it to meet the definition of a unit test, the database connection would need to have been mocked. 
 
 What do I need?
 ---------------
@@ -62,3 +64,12 @@ An existing Laravel project will already have the required third-party packages 
 * PsySh
 
 I'll explain all of these at a more appropriate time. In addition, you may want to use Behat and Mink for acceptance testing - we'll cover those in the first part as they are a good introduction to writing tests, but they're also arguably less essential than the others.
+
+What other testing solutions are there?
+---------------------------------------
+
+Plenty! However, this book is intended to be relatively short and concise, and is not intended to cover every testing solution available. Instead, the goal is to get you conversant with some basic testing techniques. Once you understand that, it should be straightforward to apply that knowledge to other testing.
+
+PHPUnit is the most popular testing framework in the PHP world, ships with Laravel, and is one of the so-called xUnit testing frameworks, which are generally solid solutions in just about any language under the sun. For that reason we will use that is our primary testing solution. It does support mocking, but Mockery is generally regarded as a better solution than PHPUnit's native mocks, and again it ships with Laravel, so we will use that for writing mocks.
+
+We will cover Behat for acceptance tests as well, and will touch on some other possibilities, but primarily this book is intended to get you comfortable with PHPUnit.
