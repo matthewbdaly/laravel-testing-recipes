@@ -2,6 +2,21 @@
 
 The strategy I use for testing Laravel models is based on the one I learned for testing Django models - like Laravel, Django has an Active Record-style ORM, so similar strategies can be used.
 
+It's arguable as to whether ORM models themselves actually need much in the way of testing if you don't add any custom functionality. There's no point in wasting time and effort testing the basic functionality of a model, since that's provided by Eloquent, which has its own tests. For that reason, my tests tend to focus on the following:
+
+* That we can create an instance of the required model
+* That we can retrieve it
+* That we can retrieve the fields correctly
+
+This tests the following:
+
+* That the model class exists
+* That the migration(s) to create and update the model class have set up the correct fields
+
+Since Django defines the fields in the model classes, in that context this approach would just test the models. In the context of a Laravel application, this approach actually tests both the migrations and the models, which makes sense as the migrations are the definitive source of truth in terms of the database structure, and so we ought to test them to make sure they are creating the right structure.
+
+Let's see our first model test:
+
 ```php
 <?php
 
@@ -68,7 +83,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(Tripstream\Eloquent\Models\User::class, function (Faker $faker) {
+$factory->define(App\User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
@@ -94,7 +109,7 @@ Again, we're using a factory to create the required fixture. This is defined in 
 use Faker\Generator as Faker;
 use Carbon\Carbon;
 
-$factory->define(Tripstream\Eloquent\Models\Trip::class, function (Faker $faker) {
+$factory->define(App\Trip::class, function (Faker $faker) {
     return [
         'title' => $faker->word,
         'description' => $faker->sentence,
@@ -122,7 +137,7 @@ Here's that factory:
 
 use Faker\Generator as Faker;
 
-$factory->define(Tripstream\Eloquent\Models\Post::class, function (Faker $faker) {
+$factory->define(App\Post::class, function (Faker $faker) {
     return [
         'title' => $faker->word,
         'description' => $faker->sentence,
