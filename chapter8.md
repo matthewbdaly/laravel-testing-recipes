@@ -108,9 +108,12 @@ This acts on the response object, so we need to pass that through as well. Fortu
 <?php
 
 use Illuminate\Http\Request;
+use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 
 class ETagMiddlewareTest extends TestCase
 {
+    use MockeryPHPUnitIntegration;
+
     /**
      * Test new request not cached
      *
@@ -154,11 +157,6 @@ class ETagMiddlewareTest extends TestCase
         $middlewareResponse = $middleware->handle($request, function () use ($response) { 
             return $response;
         });
-    }
-
-    public function teardown()
-    {
-        Mockery::close();
     }
 }
 ```

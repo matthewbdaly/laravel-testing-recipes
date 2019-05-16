@@ -12,14 +12,11 @@ namespace Tests\Services;
 use Mockery as m;
 use Tests\TestCase;
 use App\Services\Invoicer;
+use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 
 class InvoicerTest extends TestCase
 {
-    public function tearDown()
-    {
-        m::close();
-        parent::tearDown();
-    }
+    use MockeryPHPUnitIntegration;
 
     public function testCreateInvoice()
     {
