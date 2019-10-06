@@ -1,13 +1,13 @@
 # Why write tests?
 
-Whenever the subject of test-driven development comes up, my experience has been that a lot of developers, managers and other stakeholders are resistant to the idea. You may even be one of them! Well, I'm here to tell you that learning to write tests is the single best thing I've done as a professional web developer. The benefits of having a full test suite include:
+Whenever the subject of test-driven development comes up, my experience has been that a lot of developers, managers and other stakeholders are resistant to the idea. You may even be one of them. Well, I'm here to tell you that learning to write tests is the single best thing I've done as a professional web developer. The benefits of having a full test suite include:
 
 * Easier debugging
 * Easier upgrades
 * Better code
 * Easier to understand
 
-And that's just for starters! Conversely, I've also been in the opposite position, and a large legacy project with little or no test coverage can cause you, your colleagues, and your clients a lot of stress - certainly I attribute many of my grey hairs to legacy code without tests!
+And that's just for starters. Conversely, I've also been in the opposite position, and a large legacy project with little or no test coverage can cause you, your colleagues, and your clients a lot of stress - certainly I attribute many of my grey hairs to legacy code without tests!
 
 However, you're still likely to hear a lot of arguments against writing tests. I've collected these below, together with refutations:
 
@@ -21,13 +21,13 @@ The best analogy I've ever heard is with double-entry bookkeeping in accountancy
 
 > We don't have time to write tests
 
-And you do have time to fix bugs in production that could have been found earlier? The earlier a bug is found, the lower the cost to fix it. Once code is in production, the potential cost of fixing problems with it becomes much higher than if it were detected straight after implementation, because the code I've written is still fresh in my mind. In addition, certain changes can be much harder to implement in production that development because they're not easy to reverse - for instance, if you choose the wrong method of password hashing, it can be very hard to change it later.
+And you do have time to fix bugs in production that could have been found earlier? The earlier a bug is found, the lower the cost to fix it. Once code is in production, the potential cost of fixing problems with it becomes much higher than if it were detected straight after implementation, because the code I've written is still fresh in my mind. In addition, certain changes can be much harder to implement in production that development because they're not easy to reverse - for instance, if you choose the wrong method of password hashing, it can be hard to change it later.
 
 I've worked on projects with and without tests. When working on the ones that had tests, I often found problems shortly after I'd implemented the solution, making it easy to fix them. When I didn't have tests, it was often weeks or months later that I found the issue, potentially causing problems with a project. Upgrades to software packages have been quicker, easier and less stressful because I've been able to identify issues during the upgrade process. And it was quicker to reproduce the issue with tests because I could set a breakpoint at an appropriate point in the existing test suite and examine what's happening directly. In addition, tests encourage a kind of "outside-in" viewpoint that's hard to describe, but makes it easier to understand what's going on.
 
 There's no denying that writing tests does add time to the software development process. However, you do get a return on that investment of time. A project with good test coverage is easier to work on, to upgrade and extend, and to maintain. By catching errors as early as possible, a good test suite will save you the grief of explaining to your manager why your shiny new web app failed in production, rather than allowing you to catch that error in development.
 
-Also, manual testing is not only time-consuming, but incredibly dull. Computers can repeat the same set of steps over and over easily without human intervention, so let them play to their strengths by automating the tests you'd otherwise do manually.
+Also, manual testing is not only time-consuming, but incredibly dull. Computers can repeat steps over and over easily without human intervention, so let them play to their strengths by automating the tests you'd otherwise do manually.
 
 > You can't guarantee every error will be caught
 
